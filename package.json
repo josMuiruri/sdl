@@ -1,0 +1,24 @@
+{
+  "name": "sdl",
+  "version": "1.0.0",
+  "description": "social API",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josMuiruri/sdl.git"
+  },
+  "author": "JOSEPH MUIRURI",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/josMuiruri/sdl/issues"
+  },
+  "homepage": "https://github.com/josMuiruri/sdl#readme",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1"
+  }
+}
