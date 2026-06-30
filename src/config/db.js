@@ -1,28 +1,34 @@
-const Sequelize = require("sequelize");
-const {development} = require("./config")
+import dotenv from "dotenv";
+dotenv.config({ path: "./config.env "});
 
-console.log({
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD ? "***set***" : "missing",
-  database: process.env.DB_NAME,
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-});
+import Sequelize from "sequelize";
+
+// console.log({
+//   user: process.env.DB_USER,
+//   password: process.env.DB_PASSWORD ? "***set***" : "missing",
+//   database: process.env.DB_NAME,
+//   host: process.env.DB_HOST,
+//   port: process.env.DB_PORT,
+// });
 
 
-const sequelize = new Sequelize(
-    // process.env.DATABASE_URI
-    development.database,
-    development.username,
-    development.password,
+export const sequelize = new Sequelize(
+    process.env.DATABASE_URI,
+    // process.env.DB_NAME,
+    // process.env.DB_USER,
+    // process.env.DB_PASSWORD,
+    
+    // development.database,
+    // development.username,
+    // development.password,
     {
-        host: development.host,
-        dialect: development.dialect,
-        port: process.env.DB_PORT,
-        logging: console.log
+        // host: '127.0.0.1',
+        // dialect: development.dialect,
+        // port: process.env.DB_PORT,
+        logging: console.log,
     }
 );
-async function connectDB() {
+export async function connectDB() {
     try {
         await sequelize.authenticate();
         console.log("Database connected");
@@ -31,12 +37,10 @@ async function connectDB() {
     }
 };
 
-console.log({
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-});
-
-module.exports = {sequelize, connectDB};
+// console.log({
+//   user: process.env.DB_USER,
+//   password: process.env.DB_PASSWORD,
+//   database: process.env.DB_NAME,
+//   host: process.env.DB_HOST,
+//   port: process.env.DB_PORT,
+// });

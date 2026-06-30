@@ -1,6 +1,6 @@
 import { Model, DataTypes} from "sequelize";
 
-import sequelize from "./../config/db"
+import { sequelize } from "./../config/db.js"
 
 class User extends Model{}
 
