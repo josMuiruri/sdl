@@ -59,3 +59,28 @@ export const getUser = async (req, res) => {
         });
     }
 };
+
+export const updateUser = async (req, res) => {
+    try {
+        const user = await User.findByPk(req.params.id);
+        if (!user)
+            return res.status(404).json({
+        status: 'fail',
+        message: 'User not found'
+    });
+        await user.update(req.body);
+
+        res.status(200).json({
+            status: 'success',
+            data: {
+                user
+            }
+        });
+
+    } catch (err) {
+        res.status(500).json({
+            status: 'fail',
+            message: err
+        })
+    }
+};
