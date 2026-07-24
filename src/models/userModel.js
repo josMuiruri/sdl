@@ -6,7 +6,7 @@ class User extends Model{}
 
 User.init({
     id: {
-        type:DataTypes.UUID,
+        type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
     },
@@ -17,7 +17,8 @@ User.init({
 }, {
     sequelize,
     modelName: 'User',
-    tableName: 'Users'
+    tableName: 'users',
+    timestamps: true,
 });
 
 export default User;

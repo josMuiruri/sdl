@@ -13,7 +13,8 @@ export const createUser = async (req, res) => {
     } catch (err) {
         res.status(400).json({
             status: 'fail',
-            message: err.message })
+            message: err.message 
+        })
     }
 }
 
@@ -98,11 +99,12 @@ export const deteleUser = async (req, res) => {
                 status: 'fail',
                 message: 'User not found'
             });
-            
         await user.destroy();
 
-        res.status(200).json({
-            message: 'User deleted successfully'
+        res.status(204).json({
+            status: 'success',
+            message: 'User deleted successfully',
+            data: null
         });
     } catch (error) {
         res.status(500).json({

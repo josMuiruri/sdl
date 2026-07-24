@@ -31,15 +31,4 @@ await sequelize.sync({ alter: true });
 app.listen(port, () => {
     console.log(`App running on port ${port}`)
 })
-
-
-// console.log(typeof process.env.DB_PASSWORD);
-
-
-// console.log("DB_PASSWORD:", process.env.DB_PASSWORD);
-
-
-// development;
-// console.log("from config:", development.password);
-// console.log("from config:", development.database);
-// console.log("from config:", development.host);
+console.log(typeof process.env.DB_PASSWORD, process.env.DB_PASSWORD);
