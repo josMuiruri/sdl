@@ -17,3 +17,22 @@ export const createPost = async (req, res) => {
         })
     }
 }
+
+export const getAllPost = async (_req, res) => {
+    try {
+
+        const posts = await Post.findAll();
+        
+        res.status(200).json({
+            status: 'success',
+            data: {
+                posts
+            }
+        })
+    } catch(err) {
+        res.status(400).json({
+            status: 'fail',
+            message: err
+        })
+    }
+}
