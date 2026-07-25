@@ -22,23 +22,23 @@ export const getAllUsers = async (req, res) => {
     try {
 
         const users = await User.findAll();
+        
         res.status(200).json({
             status: 'success',
             results: users.length,
             data: {
-                users
-            }
-        })
+                users,
+            },
+        });
     } catch (err) {
-        res.status(404).json({
+        res.status(500).json({
             status: 'fail',
-            message: err
-        })
+            message: err.message,
+        });
     }  
-}
+};
 
 export const getUser = async (req, res) => {
-
     try {
 
         const user = await User.findByPk(req.params.id);
@@ -52,14 +52,14 @@ export const getUser = async (req, res) => {
         res.status(200).json({
             status: 'success',
             data: {
-                user
-            }
+                user,
+            },
         });
 
     } catch (err) {
         res.status(404).json({
             status: 'fail',
-            message: err
+            message: err.message,
         });
     }
 };

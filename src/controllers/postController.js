@@ -1,4 +1,4 @@
-import Post from "../models/postModel";
+import Post from "../models/postModel.js";
 
 export const createPost = async (req, res) => {
     try {
@@ -18,7 +18,7 @@ export const createPost = async (req, res) => {
     }
 }
 
-export const getAllPost = async (_req, res) => {
+export const getAllPosts = async (_req, res) => {
     try {
 
         const posts = await Post.findAll();
@@ -33,6 +33,32 @@ export const getAllPost = async (_req, res) => {
         res.status(400).json({
             status: 'fail',
             message: err
+        })
+    }
+}
+
+export const getPost = async (req, res) => {
+    try {
+
+        const post = await Post.findByPk(req.params.id);
+
+        if (!post)
+
+            return res.status(404).json({
+                status: 'fail',
+                message: 'Post not found'
+            })
+        
+        res.status(200).json({
+            status: 'success',
+            data: {
+                post
+            }
+        })
+    } catch(err) {
+        res.status(500).json({
+            status: 'fail',
+            message: err.message
         })
     }
 }

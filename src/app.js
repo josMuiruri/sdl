@@ -2,7 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 
 import userRouter from './routes/userRoutes.js';
-
+import postRouter from './routes/postRoutes.js';
 const app = express();
 
 
@@ -13,5 +13,6 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.json());
 
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/posts', postRouter);
 
 export default app;

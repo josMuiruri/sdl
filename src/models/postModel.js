@@ -20,7 +20,6 @@ Post.init({
     },
     mediaUrl: {
         type: DataTypes.STRING,
-        allowNull: false,
     },
     visibility: {
         type: DataTypes.ENUM('public', 'private', 'followers'),
