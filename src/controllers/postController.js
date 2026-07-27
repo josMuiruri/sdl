@@ -62,3 +62,29 @@ export const getPost = async (req, res) => {
         })
     }
 }
+
+export const updatePost = async (req, res) => {
+    try {
+
+        const post = await Post.findByPk(req.params.id);
+        if (!post)
+            return res.status(404).json({
+                status: 'fail',
+                message: 'Not found'
+            })
+        
+        await Post.update(req.body)
+
+        res.status(200).json({
+            status: 'success',
+            data: {
+                post
+            }
+        });
+    } catch(err) {
+        res.status(500).json({
+            status: 'fail',
+            message: err.message
+        })
+    }
+}

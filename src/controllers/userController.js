@@ -84,7 +84,7 @@ export const updateUser = async (req, res) => {
     } catch (err) {
         res.status(500).json({
             status: 'fail',
-            message: err
+            message: err.message
         })
     }
 };
