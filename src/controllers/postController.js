@@ -73,7 +73,7 @@ export const updatePost = async (req, res) => {
                 message: 'Not found'
             })
         
-        await Post.update(req.body)
+        await post.update(req.body)
 
         res.status(200).json({
             status: 'success',
@@ -84,7 +84,34 @@ export const updatePost = async (req, res) => {
     } catch(err) {
         res.status(500).json({
             status: 'fail',
-            message: err.message
+            message: err
+        })
+    }
+}
+
+export const deletePost = async (req, res) => {
+    try {
+
+        const user = await Post.findByPk(req.params.id);
+
+        if (!user)
+            return res.status(404).json({
+                status: 'fail',
+                message: 'Post not found'
+            });
+        
+        await user.destroy();
+
+        res.status(204).json({
+            status: 'success',
+            message: 'Post successfully deleted',
+            data: null
+        })
+        
+    } catch(err) {
+        res.status(500).json({
+            status: 'fail',
+            message: err
         })
     }
 }
